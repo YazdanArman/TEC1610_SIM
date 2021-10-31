@@ -13,6 +13,8 @@ uint32_t sample = 0;
 uint8_t weigh_array[4];
 bool first_bit;
 
+
+
 void setup() {
   // put your setup code here, to run once:
 
@@ -22,13 +24,12 @@ void setup() {
   sample = weigh;
   
   for (int i = 0; i < 4; i++) {
-    
+    weigh_array[i] = sample & 0x7F ;
     sample >>= 7;
-    first_bit=sample % 2;
-    Serial.println(weigh_array[i] , HEX);
-    Serial.println(first_bit , HEX);
-    weigh_array[i] = sample & 0x7F;
-    sample >>= 1;
+    Serial.println(weigh_array[i] , BIN);
+    
+    
+    
     
   }
   
