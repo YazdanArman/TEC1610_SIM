@@ -1,4 +1,3 @@
-
 #define RS_Enable_Pin PB1
 
 #define Serial_debug_port Serial1
@@ -6,11 +5,9 @@
 
 #define Heart_Beat_LED_Pin PC13
 
-unsigned long now;
-unsigned long last_sent = 0;
-const unsigned long interval = 100;
+int previousMillis = 0;
+int interval = 100;
 
-bool Heart_Beat_state = 0;
 
 void setup()
 {
@@ -21,12 +18,9 @@ void setup()
 
 void loop()
 {
-  now = millis();
-
-  if (now - last_sent >= interval)
+  if (millis() - previousMillis > interval)
   {
-    last_sent = now;
-    Heart_Beat_state ^= 1;
-    digitalWrite(Heart_Beat_LED_Pin, Heart_Beat_state);
+    previousMillis = millis();
+    digitalWrite(Heart_Beat_LED_Pin, !digitalRead(Heart_Beat_LED_Pin));
   }
 }
