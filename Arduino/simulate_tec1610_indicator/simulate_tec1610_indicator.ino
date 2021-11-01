@@ -8,6 +8,11 @@ uint32_t sample ;
 uint8_t weigh_array[5];
 uint32_t weigh = 0X00000F4B;
 
+/*
+وزن = 1658
+جايگاه مميز = 1
+*/
+
 void setup() {
   // put your setup code here, to run once:
 
