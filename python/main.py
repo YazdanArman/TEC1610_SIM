@@ -5,13 +5,14 @@ ser = serial.Serial(
     baudrate=9600,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
-    bytesize=serial.EIGHTBITS,
-    timeout=2
+    bytesize=serial.EIGHTBITS
+    # timeout=1
 )
 
 print("connected to: " + ser.portstr)
 
-while True:
-    cc = str(ser.readline())
-    print(cc)
-    # print(cc[2:][:-5])
+while 1:
+    for byte_counter in range(5):
+        cc = ser.read(1).hex()
+        print("Byte {} : 0x{}".format(byte_counter, cc))
+    print("--------------------")
