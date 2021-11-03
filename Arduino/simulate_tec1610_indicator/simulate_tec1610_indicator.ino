@@ -55,8 +55,6 @@ void setup()
       Serial.println(weigh_array[i] , HEX);
     }
   }
-  
-  //Serial.write(weigh_array, 5);
 }
 
 void loop()
