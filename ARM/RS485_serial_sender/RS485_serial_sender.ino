@@ -11,6 +11,17 @@ int Heart_Beat_interval = 100;
 int RS485_send_previousMillis = 0;
 int RS485_send_interval = 1000;
 
+bool motion_flag = 0;
+bool zero_flag = 0;
+bool sign_flag = 0;
+bool over_range = 0;
+bool over_capacity = 0;
+uint8_t decimal_point_location = 0;
+uint32_t weigh_co;
+uint8_t weigh_array[5] = {0};
+int32_t weigh = -1995;
+
+bool serial_debug = false;
 
 void setup()
 {
@@ -33,9 +44,9 @@ void loop()
   if (millis() - RS485_send_previousMillis > RS485_send_interval)
   {
     RS485_send_previousMillis = millis();
-    //Serial_debug_port.println(millis());
+    TEC1610_data_preparation();
     preTransmission();
-    RS485_serial_port.println(millis());
+    RS485_serial_port.write(weigh_array, 5);
     postTransmission();
   }
 }

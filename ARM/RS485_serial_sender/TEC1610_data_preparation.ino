@@ -1,15 +1,3 @@
-bool motion_flag = 0;
-bool zero_flag = 0;
-bool sign_flag = 0;
-bool over_range = 0;
-bool over_capacity = 0;
-uint8_t decimal_point_location = 0;
-uint32_t weigh_co;
-uint8_t weigh_array[5] = {0};
-int32_t weigh = -1995;
-
-bool serial_debug = false;
-
 void TEC1610_data_preparation()
 {
   if (weigh < 0)
