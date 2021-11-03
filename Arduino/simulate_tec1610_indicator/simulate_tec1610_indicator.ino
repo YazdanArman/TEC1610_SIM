@@ -61,5 +61,6 @@ void setup()
 
 void loop()
 {
-
+   Serial.write(weigh_array, 5);
+   delay(1000);
 }
