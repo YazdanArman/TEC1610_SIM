@@ -8,6 +8,8 @@ uint32_t weigh_co;
 uint8_t weigh_array[5] = {0};
 int32_t weigh = -1995;
 
+bool serial_debug = false;
+
 void setup()
 {
   Serial.begin(9600);
@@ -41,20 +43,23 @@ void setup()
   weigh_array[0] |= 0x80;
 
   //Serial.println("this is bytes:");
-
-  for (int i = 0; i < 5 ; i++)
+  
+  if (serial_debug)
   {
-    Serial.print("Byte ");
-    Serial.print(i);
-    Serial.print(" : ");
-    Serial.print("0x");
-    Serial.println(weigh_array[i] , HEX);
+    for (int i = 0; i < 5 ; i++)
+    {
+      Serial.print("Byte ");
+      Serial.print(i);
+      Serial.print(" : ");
+      Serial.print("0x");
+      Serial.println(weigh_array[i] , HEX);
+    }
   }
-
+  
   //Serial.write(weigh_array, 5);
 }
 
-void loop() 
+void loop()
 {
-  
+
 }
